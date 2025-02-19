@@ -14,11 +14,13 @@ namespace Library.eCommerce.Services
         //PRIVATE CONSTRUCTOR FOR SERVICE PROXY, LIMIT TIMES IT MAY BE CREATED TO ONE.
         private ProductServiceProxy()
         {
+            //INITIALIZE PRODUCT OBJECT
             Products = new List<Product?>            
             {
-                new Product{ID = 1, Name ="Product 1"},
-                new Product{ID = 2, Name ="Product 2"},
-                new Product{ID = 3, Name ="Product 3"}
+                new Product{ID = 1, Name ="PILOT LOGBOOK"},
+                new Product{ID = 2, Name ="AVIATION HEADPHONES"},
+                new Product{ID = 3, Name ="AVIATOR SUNGLASSES"},
+                new Product{ID = 4, Name ="FLIGHT BAG"}
             };
         }
 
@@ -42,11 +44,13 @@ namespace Library.eCommerce.Services
         //PUBLIC STATIC SERVICE CURRENT SINGLETON.
         private static ProductServiceProxy? instance;
         private static object instanceLock = new object();
+
+        //PUBLIC STATIC PROPERTY TO ACCESS THE SINGLETON INSTANCE
         public static ProductServiceProxy Current
         {
             get
             {
-                //LOCK AND SEMAPHORE. 
+                //LOCK AND SEMAPHORE TO PREVENT MULTIPLE INSTANCES
                 lock(instanceLock)
                 if(instance == null)
                 {
