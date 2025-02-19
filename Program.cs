@@ -1,20 +1,20 @@
-﻿//SAMANTHA BUI
-//ECOMMERCE CONSOLE
+//SAMANTHA BUI
+//SAMAZON ECOMMERCE APP I
 
+//USING
+using System;
 using Samazon.Models;
 using Library.eCommerce.Services;
-using System;
-using System.Xml.Serialization;
 
-namespace MyApp
+//NAMESPACE
+namespace Samazon
 {
+    //INTERNAL CLASS PROGRAM
     internal class Program
     {
-        //MAIN IS STATIC. CANNOT CALL NOT STATIC THING IN STATIC FUNCTION.
+        //STATIC VOID MAIN(STRING[] ARGS){}
         static void Main(string[] args)
         {
-            //var LastKey = 1;
-
             //OUTPUT CONSOLE.WRITELINE("");
             Console.WriteLine("WELCOME TO SAMAZON!");
             Console.WriteLine("INPUT [C] TO CREATE INVENTORY ITEM.");
@@ -23,11 +23,12 @@ namespace MyApp
             Console.WriteLine("INPUT [D] TO DELETE INVENTORY ITEM.");
             Console.WriteLine("INPUT [T] TO TERMINATE PROGRAM.");
 
-            //List<Product?> list = new List<Product?>();
             //SHALLOW COPY SMART POINTER
             List<Product?> list = ProductServiceProxy.Current.Products;
             
+            //CRUD SELECTION USING CASE SWITCH OR IF ELSE CONDITIONS
             char choice;
+            //DO WHILE SELECTION LOOP
             do
             {
                 //INPUT CONSOLE.READLINE();
@@ -45,31 +46,16 @@ namespace MyApp
                         });
                         Console.WriteLine("INVENTORY ITEM CREATED.");
                         break;
-                        /*
-                        list.Add(new Product{
-                            //PREFIX V POSTFIX. BE CAUTIOUS.
-                            ID = LastKey++,
-                            Name = Console.ReadLine()
-                        */
-
                     case 'R':
                     case 'r':
                         Console.WriteLine("INVENTORY ITEMS: ");
                         list.ForEach(Console.WriteLine);
                         break;
-                        /*
-                        foreach (var prod in list)
-                        {
-                            Console.WriteLine(prod?.Display ?? "No Product Found");
-                        }
-                        */
-
                     case 'U':
                     case 'u':
                         Console.WriteLine("UPDATE INVENTORY ITEM: ");
                         int selection = int.Parse(Console.ReadLine() ?? "-1");
                         var selectedProd = list.FirstOrDefault(p => p.ID == selection);
-
                         if(selectedProd != null)
                         {
                             selectedProd.Name = Console.ReadLine() ?? "ERROR";
@@ -77,13 +63,6 @@ namespace MyApp
                         }
                         Console.WriteLine("INVENTORY ITEM UPDATED.");
                         break;
-                        /*
-                        if(selectedProd != null)
-                        {
-                            selectedProd.Name = Console.ReadLine() ?? "ERROR";
-                        }
-                        */
-
                     case 'D':
                     case 'd':
                         Console.WriteLine("DELETE INVENTORY ITEM: ");
@@ -91,14 +70,6 @@ namespace MyApp
                         ProductServiceProxy.Current.Delete(selection);
                         Console.WriteLine("INVENTORY ITEM DELETED.");
                         break;
-                        /*
-                        selectedProd = list.FirstOrDefault(p => p.ID == selection);
-                        if(selectedProd != null)
-                        {
-                            list.Remove(selectedProd);
-                        }
-                        */
-
                     case 'T':
                     case 't':
                         Console.WriteLine("PROGRAM TERMINATED.");
@@ -107,13 +78,11 @@ namespace MyApp
                         Console.WriteLine("INVALID INPUT.");
                         break;
                 }
-                
             }while(choice != 'T' && choice != 't');
             Console.ReadLine();
         }
     }
 }
-
 
 /* NOTES
 
