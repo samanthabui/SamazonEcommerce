@@ -24,7 +24,7 @@ namespace Samazon.Models
             }
         }
 
-        //PUBLIC CONSTRUCTOR
+        //PUBLIC CONSTRUCTOR INITIALIZES NAME TO EMPTY STRING
         public Product()
         {
             Name = string.Empty;
