@@ -1,29 +1,26 @@
-# Samazon - eCommerce Application
+# Samazon eCommerce Application
 
-## Overview
+## DESCRIPTION:
 
 Samazon is an eCommerce application developed using **C#** and **.NET**. The application aims to provide an inventory management system, a shopping cart functionality, and a checkout system, including tax calculations. Currently, the project is implemented as a **console application** but will be incrementally transitioned to a **user interface (UI)** application using the **MVVM architecture**.
 
-### Key Features:
+### FUNCTIONALITY:
 - **Inventory Management**:
-  - CRUD (Create, Read, Update, Delete) functionality for managing inventory items.
-  - View and modify inventory items such as product name, price, and quantity.
+  - **Create Inventory Item**: Add new products to the inventory with details such as name, price, and quantity.
+  - **Read Inventory Items**: View all existing products in the inventory, including their attributes.
+  - **Update Inventory Item**: Modify product details, such as adjusting the price or quantity of an item.
+  - **Delete Inventory Item**: Remove products from the inventory when no longer available or needed.
   
 - **Shopping Cart**:
-  - CRUD functionality to add, read, update, and delete items in the shopping cart.
-  - Users can add products to the cart, adjust quantities, and remove items.
+  - **Add Item to Cart**: Add selected products from the inventory to the shopping cart.
+  - **Read Items in Cart**: View all items currently in the cart, including quantities and total cost.
+  - **Update Item in Cart**: Modify the quantity or other attributes of an item in the cart.
+  - **Delete Item in Cart**: Remove unwanted items from the cart before checkout.
 
 - **Checkout System**:
   - Includes tax calculations for checkout based on the current inventory and user selections.
 
-### Architecture:
-- **Object-Oriented Design (OOD)**: The system utilizes object-oriented principles to design a maintainable and scalable codebase.
-- **Singleton Pattern**: The product services are implemented using the Singleton pattern to ensure a single instance of product-related operations across the application.
-
-### Planned Features:
-- Transition from a console application to a full-fledged **UI application** using **MVVM (Model-View-ViewModel)** architecture for improved user interaction and design.
-
-## Directory Structure
+## DIRECTORY STRUCTURE:
 
 ```plaintext
 Samazon
