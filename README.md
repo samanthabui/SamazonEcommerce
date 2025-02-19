@@ -4,7 +4,7 @@
 
 Samazon is an eCommerce application developed using **C#** and **.NET**. The application aims to provide an inventory management system, a shopping cart functionality, and a checkout system, including tax calculations. Currently, the project is implemented as a **console application** but will be incrementally transitioned to a **user interface (UI)** application using the **MVVM architecture**.
 
-### FUNCTIONALITY:
+## FUNCTIONALITY:
 - **Inventory Management**:
   - **Create Inventory Item**: Add new products to the inventory with details such as name, price, and quantity.
   - **Read Inventory Items**: View all existing products in the inventory, including their attributes.
