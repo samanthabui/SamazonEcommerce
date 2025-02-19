@@ -15,22 +15,23 @@ namespace Samazon
         //STATIC VOID MAIN(STRING[] ARGS){}
         static void Main(string[] args)
         {
-            //OUTPUT CONSOLE.WRITELINE("");
-            Console.WriteLine("WELCOME TO SAMAZON!");
-            Console.WriteLine("INPUT [C] TO CREATE INVENTORY ITEM.");
-            Console.WriteLine("INPUT [R] TO READ INVENTORY ITEMS.");
-            Console.WriteLine("INPUT [U] TO UPDATE INVENTORY ITEM.");
-            Console.WriteLine("INPUT [D] TO DELETE INVENTORY ITEM.");
-            Console.WriteLine("INPUT [T] TO TERMINATE PROGRAM.");
-
             //SHALLOW COPY SMART POINTER
             List<Product?> list = ProductServiceProxy.Current.Products;
             
+            //OUTPUT CONSOLE.WRITELINE("");
+            Console.WriteLine("WELCOME TO SAMAZON!" + Environment.NewLine);
             //CRUD SELECTION USING CASE SWITCH OR IF ELSE CONDITIONS
             char choice;
+
             //DO WHILE SELECTION LOOP
             do
             {
+                Console.WriteLine("INPUT [C] TO CREATE INVENTORY ITEM.");
+                Console.WriteLine("INPUT [R] TO READ INVENTORY ITEMS.");
+                Console.WriteLine("INPUT [U] TO UPDATE INVENTORY ITEM.");
+                Console.WriteLine("INPUT [D] TO DELETE INVENTORY ITEM.");
+                Console.WriteLine("INPUT [T] TO TERMINATE PROGRAM." + Environment.NewLine);
+
                 //INPUT CONSOLE.READLINE();
                 string? input = Console.ReadLine();
                 choice = input[0];
@@ -44,12 +45,13 @@ namespace Samazon
                         {
                             Name = Console.ReadLine()
                         });
-                        Console.WriteLine("INVENTORY ITEM CREATED.");
+                        Console.WriteLine("INVENTORY ITEM CREATED." + Environment.NewLine);
                         break;
                     case 'R':
                     case 'r':
-                        Console.WriteLine("INVENTORY ITEMS: ");
+                        Console.WriteLine("READING INVENTORY ITEMS: ");
                         list.ForEach(Console.WriteLine);
+                        Console.WriteLine("INVENTORY ITEMS READ." + Environment.NewLine);
                         break;
                     case 'U':
                     case 'u':
@@ -61,7 +63,7 @@ namespace Samazon
                             selectedProd.Name = Console.ReadLine() ?? "ERROR";
                             ProductServiceProxy.Current.AddOrUpdate(selectedProd);
                         }
-                        Console.WriteLine("INVENTORY ITEM UPDATED.");
+                        Console.WriteLine("INVENTORY ITEM UPDATED." + Environment.NewLine);
                         break;
                     case 'D':
                     case 'd':
