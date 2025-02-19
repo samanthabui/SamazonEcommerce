@@ -4,7 +4,7 @@
 //USING
 using System;
 
-//NAMESPACE
+//NAMESPACE DEVELOP LIBRARY MODEL
 namespace Samazon.Models
 {
     //PUBLIC CLASS MODEL
