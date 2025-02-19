@@ -20,7 +20,7 @@ Samazon is an eCommerce application developed using **C#** and **.NET**. The app
 - **Checkout System**:
   - Includes tax calculations for checkout based on the current inventory and user selections.
 
-## Directory Structure
+## DIRECTORY STRUCTURE:
 
 ```plaintext
 Samazon
