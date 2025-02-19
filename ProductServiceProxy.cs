@@ -1,15 +1,14 @@
 //SAMANTHA BUI
-//ECOMMERCE
+//SAMAZON ECOMMERCE APP I
 
-using Samazon.Models;
+//USING
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Samazon.Models;
 
+//NAMESPACE
 namespace Library.eCommerce.Services
 {
+    //PUBLIC CLASS SERVICE
     public class ProductServiceProxy
     {
         //PRIVATE CONSTRUCTOR FOR SERVICE PROXY, LIMIT TIMES IT MAY BE CREATED TO ONE.
@@ -23,7 +22,7 @@ namespace Library.eCommerce.Services
             };
         }
 
-        //YOU USE ID INCREMENT TO TELL IF ADD OR UPDATE FUNCTION IS UTILIZED.
+        //PUBLIC COUNTER ID INCREMENT TO TELL IF ADD OR UPDATE FUNCTION IS UTILIZED.
         private int LastKey
         {
             get
@@ -40,11 +39,9 @@ namespace Library.eCommerce.Services
             }
         }
 
-        //QUESTION MARK MAKES NULLABLE.
+        //PUBLIC STATIC SERVICE CURRENT SINGLETON.
         private static ProductServiceProxy? instance;
         private static object instanceLock = new object();
-
-        //CURRENT SIGN OF SINGLETON.
         public static ProductServiceProxy Current
         {
             get
@@ -59,11 +56,10 @@ namespace Library.eCommerce.Services
             }
         }
 
-        //NO PUBLIC DATA MEMBER, ANYONE MAY MODIFY
+        //PUBLIC LIST
         public List<Product?> list;
 
         //LAMBDA VERSION OF GETTER. LIMITING ACCESS THE SAME WAY GETTERS LIMIT ACCESS.
-        //public List<Product?> Products => list;
         public List<Product?> Products { get; private set; }
 
         //PRODUCT ADD OR UPDATE FUNCTION

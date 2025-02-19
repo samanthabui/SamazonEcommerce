@@ -1,18 +1,16 @@
 //SAMANTHA BUI
-//ECOMMERCE
+//SAMAZON ECOMMERCE APP I
 
+//USING
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
+//NAMESPACE
 namespace Samazon.Models
 {
-   public class Product
+    //PUBLIC CLASS MODEL
+    public class Product
     {
-        //TRADITIONAL GETTERS AND SETTERS
-        //PROPERTY GETTERS AND SETTERS
+        //PUBLIC PROPERTY GETTERS AND SETTERS
         public int ID { get; set; }
 
         public string? Name { get; set; }
@@ -21,11 +19,12 @@ namespace Samazon.Models
         {
             get
             {
-                //FORMAT STRING
+                //RETURN FORMAT STRING
                 return $"{ID}. {Name}";
             }
         }
 
+        //PUBLIC CONSTRUCTOR
         public Product()
         {
             Name = string.Empty;
