@@ -1,12 +1,10 @@
-//CONTENT PAGE MAIN PAGE XAML LOGIC
+//MAUI: CONTENT PAGE MAIN PAGE XAML LOGIC
 using Maui.eCommerce.ViewModels;
 
 namespace Maui.eCommerce;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
-
 	public MainPage()
 	{
 		InitializeComponent();
@@ -14,21 +12,21 @@ public partial class MainPage : ContentPage
 		BindingContext = new MainViewModel(); //ASSIGNS BINDING CONTEXT TO VIEWMODEL, ADHERING TO MVVM.
 	}
 
-/*
-	//VIOLATES MVVM IF VIEW AND VIEW MODEL ARE THE SAME. THEREFORE, MAKE CLASS NAMED MAINVIEWMODEL.
-	//DECOUPLE THE DEPENDENCIES. HAVE THE ABILITY TO REUSE VIEWMODELS.
+/* 
+	//BINDING MVVM: VIOL ATES MVVM IF VIEW AND VIEW MODEL ARE THE SAME. THEREFORE, MAKE CLASS NAMED MAINVIEWMODEL.
+	//BINDING MVVM: DECOUPLE THE DEPENDENCIES. HAVE THE ABILITY TO REUSE VIEWMODELS.
 	public MainPage()
 	{
 		InitializeComponent();
 		BindingContext = this;
 	}
 
-	//TO BIND TO FRONT END, HAVE A PROPERTY THAT IS ACCESSIBLE. YOU CAN'T BIND SOMETHING NOT A PROPERTY. 
-	//XAML SCRIPT "{BINDING DISPLAY}" SAYS GO TO BINDING CONTEXT OF THIS VIEW, FIND A PROPERTY NAMED DISPLAY.
+    //BINDING MVVM: TO BIND TO FRONT END, HAVE A PROPERTY THAT IS ACCESSIBLE. YOU CAN'T BIND SOMETHING NOT A PROPERTY. 
+    //BINDING MVVM: XAML SCRIPT "{BINDING DISPLAY}" SAYS GO TO BINDING CONTEXT OF THIS VIEW, FIND A PROPERTY NAMED DISPLAY.
 	public string Display{
 		get
 		{
-			return "Hello, World!";
+			return "HOME";
 		}
 	}
 */
@@ -37,6 +35,5 @@ public partial class MainPage : ContentPage
 	{
 		Shell.Current.GoToAsync("//InventoryManagement");
 	}
-
 }
 
