@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Maui.eCommerce.Views.InventoryManagementView"
-             Title="INVENTORY MANGEMENT">
+             Title="INVENTORY MANAGEMENT"
+             NavigatedTo ="ContentPage_NavigatedTo">
 
     <VerticalStackLayout>
 
@@ -37,7 +38,8 @@
             Text="ADD" Clicked ="AddClicked"/>
 
         <Button
-            Text="EDIT"/>
+            Text="EDIT"
+            Clicked="EditClicked"/>
 
         <Button
             Text="DELETE"   
@@ -48,5 +50,4 @@
             Clicked="CancelClicked"/>
 
     </VerticalStackLayout>
-
 </ContentPage>
