@@ -1,37 +1,62 @@
+//MAUI: CONTENT PAGE INVENTORY MANAGEMENT VIEW MODEL
 using Library.eCommerce.Services;
 using Samazon.Models;
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
+//BINDING MVVM: VIOLATES MVVM IF VIEW AND VIEW MODEL ARE THE SAME. THEREFORE, MAKE CLASS NAMED MAINVIEWMODEL.
+//BINDING MVVM: DECOUPLE THE DEPENDENCIES. HAVE THE ABILITY TO REUSE VIEWMODELS.
 namespace Maui.eCommerce.ViewModels
-{ 
-    public class InventoryManagementViewModel
+{
+    //INHERITANCE MEANS OBJ KEEPS ALL OF PARENTS. PARTIAL MAKES SURE PART OF CLASS DEF IN XAML AND PART DEF IN C#.
+    //ADD: INTERFACE INOTIFYPROPERTYCHANGED ALLOWS XAML TO UNDERSTAND WHEN PROPERTY HAS CHANGED.
+    public class InventoryManagementViewModel: INotifyPropertyChanged
     {
-        //ADD PROJECT DEPENDENCY. ADD PROJECT REFERENCE TO LIBRARY AND SAMAZON.
-        //MAKE NULLABILITY OF REFERENCE TYPE MATCH USING ?.
+        //MAKE NULLABILITY OF REFERENCE TYPE MATCH USING ?  
         public Product? SelectedProduct { get; set; }
-        //ProductServiceProxy.Current RIGHT HAND SIDE IS REFERENCE, EASY TROUBLESHOOT.
+        //ProductServiceProxy.Current RIGHT HAND SIDE IS REFERENCE, EASY REFERENCE.
         private ProductServiceProxy _svc = ProductServiceProxy.Current;
-        public List<Product?> Products
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        //ADD: [CallerMemberName] CODE SELF ACTUALIZATION. PASSING IN NAME OF WHATEVER CALLED IT.
+        public void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            if (PropertyChanged is null){
+                throw new ArgumentException(nameof(PropertyChanged));
+            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        //ADD: NOTIFY PROPERTY CHANGED REFRESH LIST
+        public void RefreshProductList()
+        {
+            //ADD: nameof() TAKES COMPIILED THING AND RETURNS STRING THAT IS NAME OF THING. 
+            NotifyPropertyChanged(nameof(Products));
+        }
+
+        //ITEM SOURCE IS OBSERVABLE COLLECTION. CHANGE LIST TO OBERSERVABLE COLLECTION.
+        public ObservableCollection<Product?> Products
         {
             get
             {
-                return _svc.Products;
+                return new ObservableCollection<Product?>(_svc.Products);
             }
         }
 
-        //DELETE FUNCTION IS TIGHTLY COUPLED TO VIEW. WANT TO ENCAPSULATE FOR THE VIEW MODEL TO HANDLE PRODUCT SERVICE PROXY.
-        //GO TO VIEW MODEL AND CREATE A DELETE FUNCTION.
+        //BINDING MVVM: DELETE FUNCTION IS TIGHTLY COUPLED TO VIEW. WANT TO ENCAPSULATE FOR THE VIEW MODEL TO HANDLE PRODUCT SERVICE PROXY.
+        //BINDING MVVM: GO TO VIEW MODEL AND CREATE A DELETE FUNCTION.
         public Product? Delete()
         {
-            return _svc.Delete(SelectedProduct?.ID ?? 0);
+            var item = _svc.Delete(SelectedProduct?.ID ?? 0);
+            NotifyPropertyChanged("Products");
+            return item;
         }
     }
 }
-
-//ASSIGNMENT II
-//SET UP DEFAULT DATA IN PRODUCT SERVICE PROXY SO YOU UNDERSTAND WHEN BINDING HAS SUCCEEDED.

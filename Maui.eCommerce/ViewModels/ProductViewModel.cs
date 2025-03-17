@@ -19,6 +19,32 @@ namespace Maui.eCommerce.ViewModels
 	//BINDING MVVM: GO TO VIEW MODEL AND CREATE A PRODUCTVIEWMODEL FUNCTION.
 	public class ProductViewModel
 	{
-		public string? Name { get; set; }
+		//EDIT: TYPE OF PROPERTIES - PROPERTY THAT TAKES DATA FROM CLASS, PROPERTY PUBLIC ACCESSORS TO PIECE OF INFORMATION.
+		public string? Name { 
+			get 
+			{
+				return Model?.Name ?? string.Empty;
+			}
+			set 
+			{
+				if(Model != null && Model.Name != value)
+				{
+					Model.Name = value;
+				}
+			}
+		} 
+
+		public Product? Model { get; set; }
+
+		public ProductViewModel()
+		{
+			Model = new Product();
+		}
+
+		//EDIT: CONVERSION CONSTRUCTOR CONVERTS FROM MODEL TO VIEWMODEL.
+		public ProductViewModel(Product? model)
+		{
+			Model = new Product();
+		}
 	}
 }
