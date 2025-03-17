@@ -61,6 +61,14 @@ namespace Library.eCommerce.Services
             }
         }
 
+        //EDIT: GO TO SERVICE PROXY, GET REF BY ID, WHERE PRODUCT ID MATCHES INPUT ID.
+        //EDIT: SHALLOW COPY V DEEP COPY, SHALLOW COPY TO UPDATE.
+
+        public Product? GetById(int id)
+        {
+            return Products.FirstOrDefault(p => p.ID == id);
+        }
+
         //PUBLIC LIST
         public List<Product?> list;
 
