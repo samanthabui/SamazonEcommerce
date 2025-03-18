@@ -7,14 +7,14 @@ namespace Maui.eCommerce.Views;
 
 [QueryProperty(nameof(ProductId), "productId")]
 
-//BINDING MVVM: PRODUCTVIEWMODEL IS TIGHTLY COUPLED TO VIEW. WANT TO ENCAPSULATE FOR THE VIEW MODEL TO HANDLE PRODUCT SERVICE PROXY.
-//BINDING MVVM: GO TO VIEW MODEL AND CREATE A PRODUCTVIEWMODEL FUNCTION.
+//BINDING MVVM: VIOLATES MVVM IF VIEW AND VIEW MODEL ARE THE SAME. THEREFORE, MAKE CLASS NAMED MAINVIEWMODEL.
+//BINDING MVVM: DECOUPLE THE DEPENDENCIES. HAVE THE ABILITY TO REUSE VIEWMODELS.
 public partial class ProductDetails : ContentPage
 {
 	public ProductDetails()
 	{
 		InitializeComponent();
-		//BindingContext = new ProductViewModel();
+		//BindingContext = new ProductViewModel(); MOVE TO REFRESH
 	} 
 
 	//EDIT: EDIT FUNCTION BASED ON PRODUCT ID.
@@ -25,10 +25,13 @@ public partial class ProductDetails : ContentPage
 		Shell.Current.GoToAsync("//InventoryManagement");
 	}
 
+	//BINDING MVVM: PRODUCTVIEWMODEL IS TIGHTLY COUPLED TO VIEW. WANT TO ENCAPSULATE FOR THE VIEW MODEL TO HANDLE PRODUCT SERVICE PROXY.
+	//BINDING MVVM: GO TO VIEW MODEL AND CREATE A PRODUCTVIEWMODEL FUNCTION.
 	private void SubmitClicked(object sender, EventArgs e)
 	{
-		var name = (BindingContext as ProductViewModel).Name;
-		ProductServiceProxy.Current.AddOrUpdate(new Product {Name = name});
+		(BindingContext as ProductViewModel).AddOrUpdate();
+		//var name = (BindingContext as ProductViewModel).Name;
+		//ProductServiceProxy.Current.AddOrUpdate(new Product {Name = name});
 		Shell.Current.GoToAsync("//InventoryManagement");
 	}
 

@@ -6,16 +6,27 @@
              NavigatedTo ="ContentPage_NavigatedTo">
 
     <VerticalStackLayout>
+         
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
-        <Label 
-            Text="INVENTORY MANAGEMENT"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center"/>
+            <Entry 
+                Text="{Binding Query}" 
+                Grid.Column="0"/>
+
+            <Button 
+                Text="SEARCH" 
+                Grid.Column="1" 
+                Clicked="SearchClicked"/>  
+        </Grid>
 
         <ListView
+            
             ItemsSource ="{Binding Products}"
             SelectedItem ="{Binding SelectedProduct}">
-
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -25,9 +36,19 @@
                                 <ColumnDefinition />
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Column = "0" Text= "{Binding Display}"/>
-                            <Button Grid.Column = "1" Text= "EDIT"/>
-                            <Button Grid.Column = "2" Text= "DELETE"/>
+
+                            <Label 
+                                Grid.Column = "0" 
+                                Text= "{Binding Display}"/>
+
+                            <Button 
+                                Grid.Column = "1" 
+                                Text= "EDIT"/>
+
+                            <Button 
+                                Grid.Column = "2" 
+                                Text= "DELETE"/>
+
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
@@ -35,7 +56,8 @@
         </ListView>
 
         <Button 
-            Text="ADD" Clicked ="AddClicked"/>
+            Text="ADD" 
+            Clicked ="AddClicked"/>
 
         <Button
             Text="EDIT"
@@ -50,4 +72,5 @@
             Clicked="CancelClicked"/>
 
     </VerticalStackLayout>
+
 </ContentPage>
