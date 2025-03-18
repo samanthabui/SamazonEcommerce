@@ -17,8 +17,8 @@ namespace Maui.eCommerce.ViewModels
         {
             get
             {
-                return "MAIN PAGE";
-            }
+                return "BINDING LABEL: MAIN PAGE";
+            } 
         }
     }
 }
