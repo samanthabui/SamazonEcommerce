@@ -7,11 +7,6 @@
 
     <VerticalStackLayout>
 
-        <Label 
-            Text="PRODUCT DETAILS"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center"/>
-
         <Entry
             Text="{Binding Name}"/>
 
@@ -24,4 +19,5 @@
             Clicked="GoBackClicked"/>
             
     </VerticalStackLayout>
+
 </ContentPage>
