@@ -21,6 +21,11 @@ namespace Maui.eCommerce.ViewModels
     {
         //MAKE NULLABILITY OF REFERENCE TYPE MATCH USING ?  
         public Product? SelectedProduct { get; set; }
+
+        //SEARCH: SEARCH FUNCTION BASED ON QUERY 
+        //SEARCH: ENTRY TEXT IN INVENTORY MANAGEMENT XAML SCRIPT. FUNCTION IMPLEMENTATION IN INVENTORY MANAGEMENT XAML LOGIC SearchClicked(). INVENTORY MANAGEMENT VIEWMODEL Query { get; set; }, ObservableCollection.
+        public string? Query { get; set; }
+
         //ProductServiceProxy.Current RIGHT HAND SIDE IS REFERENCE, EASY REFERENCE.
         private ProductServiceProxy _svc = ProductServiceProxy.Current;
 
@@ -46,10 +51,11 @@ namespace Maui.eCommerce.ViewModels
         {
             get
             {
-                return new ObservableCollection<Product?>(_svc.Products);
+                var filteredList = _svc.Products.Where(p => p?.Name?.ToLower().Contains(Query?.ToLower() ?? string.Empty) ?? false);
+                return new ObservableCollection<Product?>(filteredList);
             }
         }
-
+  
         //BINDING MVVM: DELETE FUNCTION IS TIGHTLY COUPLED TO VIEW. WANT TO ENCAPSULATE FOR THE VIEW MODEL TO HANDLE PRODUCT SERVICE PROXY.
         //BINDING MVVM: GO TO VIEW MODEL AND CREATE A DELETE FUNCTION.
         public Product? Delete()
@@ -59,4 +65,4 @@ namespace Maui.eCommerce.ViewModels
             return item;
         }
     }
-}
+}	
