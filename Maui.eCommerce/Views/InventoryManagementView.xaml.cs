@@ -1,9 +1,11 @@
-//MAUI: CONTENT PAGE INVENTORY MANAGEMENT XAML LOGIC
+   //MAUI: CONTENT PAGE INVENTORY MANAGEMENT XAML LOGIC
 using System.ComponentModel;
 using Maui.eCommerce.ViewModels;
 
 namespace Maui.eCommerce.Views;
 
+//BINDING MVVM: VIOLATES MVVM IF VIEW AND VIEW MODEL ARE THE SAME. THEREFORE, MAKE CLASS NAMED MAINVIEWMODEL.
+//BINDING MVVM: DECOUPLE THE DEPENDENCIES. HAVE THE ABILITY TO REUSE VIEWMODELS.
 public partial class InventoryManagementView : ContentPage, INotifyPropertyChanged
 {
 	public InventoryManagementView()
@@ -36,6 +38,13 @@ public partial class InventoryManagementView : ContentPage, INotifyPropertyChang
 		var productId = (BindingContext as InventoryManagementViewModel)?.SelectedProduct?.ID;
         Shell.Current.GoToAsync("//Product?productId={productId}");  
     }
+
+	//SEARCH: SEARCH FUNCTION BASED ON QUERY 
+	//SEARCH: ENTRY TEXT IN INVENTORY MANAGEMENT XAML SCRIPT. FUNCTION IMPLEMENTATION IN INVENTORY MANAGEMENT XAML LOGIC SearchClicked(). INVENTORY MANAGEMENT VIEWMODEL Query { get; set; }, ObservableCollection.
+	private void SearchClicked(object sender, EventArgs e)
+	{
+		(BindingContext as InventoryManagementViewModel)?.RefreshProductList();
+	}
 
 	//ADD: REFRESH FUNCTION PER NAVIGATION. 
 	//ADD: EVENT HANDLER IN XAML SCRIPT NavigatedTo. FUNCTION IMPLEMENTATION IN XAML LOGIC ContentPage_NavigatedTo. VIEWMODEL NotifyPropertyChanged RefreshProductList.
