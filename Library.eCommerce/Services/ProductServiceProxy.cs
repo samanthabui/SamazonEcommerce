@@ -3,25 +3,25 @@
 
 //USING
 using System;
-
+using Library.eCommerce.Models;
 using Samazon.Models;
 
 //NAMESPACE DEVELOP LIBRARY SERVICE
 namespace Library.eCommerce.Services
 {
-    //PUBLIC CLASS PRODUCT SERVICE PROXY - IMPLEMENTS INVENTORY CRUD FUNCTIONS.
+    //PUBLIC CLASS PRODUCT SERVICE PROXY - IMPLEMENTS INVENTORY CRUD FUNCTIONS
     public class ProductServiceProxy
     {
         //PRIVATE CONSTRUCTOR FOR SERVICE PROXY, LIMIT TIMES IT MAY BE CREATED TO ONE.
         private ProductServiceProxy()
         {
             //INITIALIZE PRODUCT OBJECT
-            Products = new List<Product?>            
+            Products = new List<Item?>            
             {
-                new Product{ID = 1, Name ="PILOT LOGBOOK"},
-                new Product{ID = 2, Name ="AVIATION HEADPHONES"},
-                new Product{ID = 3, Name ="AVIATOR SUNGLASSES"},
-                new Product{ID = 4, Name ="FLIGHT BAG"}
+                new Item{ Product = new Product{ID = 1, Name ="PILOT LOGBOOK"}, ID = 1, Quantity = 10},
+                new Item{ Product = new Product{ID = 2, Name ="AVIATION HEADPHONES"}, ID = 2, Quantity = 10},
+                new Item{ Product = new Product{ID = 3, Name ="AVIATOR SUNGLASSES"}, ID = 3, Quantity = 10},
+                new Item{ Product = new Product{ID = 4, Name ="FLIGHT BAG"}, ID = 4, Quantity = 10}
             };
         }
 
@@ -61,44 +61,44 @@ namespace Library.eCommerce.Services
             }
         }
 
-        //EDIT: GO TO SERVICE PROXY, GET REF BY ID, WHERE PRODUCT ID MATCHES INPUT ID.
-        //EDIT: SHALLOW COPY V DEEP COPY, SHALLOW COPY TO UPDATE.
-
-        public Product? GetById(int id)
-        {
-            return Products.FirstOrDefault(p => p.ID == id);
-        }
-
         //PUBLIC LIST
         public List<Product?> list;
 
         //LAMBDA VERSION OF GETTER. LIMITING ACCESS THE SAME WAY GETTERS LIMIT ACCESS.
-        public List<Product?> Products { get; private set; }
+        public List<Item?> Products { get; private set; }
 
         //PRODUCT ADD OR UPDATE FUNCTION
-        public Product AddOrUpdate(Product product)
+        public Item AddOrUpdate(Item item)
         {
             //YOU USE ID INCREMENT TO TELL IF ADD OR UPDATE FUNCTION IS UTILIZED.
-            if(product.ID == 0)
+            if(item.ID == 0)
             {
-                product.ID = LastKey + 1;
-                Products.Add(product);
+                item.ID = LastKey + 1;
+                item.Product.ID = item.ID;
+                Products.Add(item);
             }
-            return product;
+            return item;
         }
         
         //PRODUCT DELETE FUNCTION
-        public Product Delete(int ID)
+        public Item? Delete(int ID)
         {
             if(ID == 0)
             {
                 return null;
             }
 
-            Product? product = Products.FirstOrDefault(p => p.ID == ID);
+            Item? product = Products.FirstOrDefault(p => p.ID == ID);
             Products.Remove(product);
 
             return product;
+        }
+
+        //EDIT: GO TO SERVICE PROXY, GET REF BY ID, WHERE PRODUCT ID MATCHES INPUT ID.
+        //EDIT: SHALLOW COPY V DEEP COPY, SHALLOW COPY TO UPDATE.
+        public Item? GetById(int id)
+        {
+            return Products.FirstOrDefault(p => p.ID == id);
         }
     }
 }
