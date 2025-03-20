@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Library.eCommerce.Models;
 using Samazon.Models;
 
 //SINGLETON: TYPE SHOPPING CART SERVICE. CAN ONLY GET ONE INSTANCE OF AN OBJECT OF THIS TYPE. 
@@ -12,15 +13,16 @@ namespace Library.eCommerce.Services
     //NEED PUBLIC TO USE.
     public class ShoppingCartService
     {
-        private List<Product> items;
-        public List<Product> CartItems
+        private ProductServiceProxy _prodSvc;
+        private List<Item> items;
+        public List<Item> CartItems
         {
             get
             {
                 return items;
             }
         }
-        
+
         //NEED L VALUE TO STORE SHOPPING CART SERVICE.
         //TO CALL FUNCTION MEMBER, YOU NEED OBJECT OF CLASS. STATIC ALLOWS TO CALL FUNCTION MEMBER, WITHOUT OBJECT OF CLASS.
         public static ShoppingCartService Current 
@@ -41,10 +43,10 @@ namespace Library.eCommerce.Services
 
         private static ShoppingCartService? instance;
 
-        //NEED PRIVATE CONSTRUCTOR.
+        //NEED PRIVATE CONSTRUCTOR. 
         private ShoppingCartService()
         {
-
+            items = new List<Item>();
         }
     }
 }
