@@ -1,4 +1,4 @@
-//MAUI: CONTENT PAGE MAIN PAGE XAML LOGIC
+﻿//MAUI: CONTENT PAGE MAIN PAGE XAML LOGIC
 using Maui.eCommerce.ViewModels;
 
 namespace Maui.eCommerce;

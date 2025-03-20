@@ -1,4 +1,4 @@
-//MAUI: APPLICATION XAML LOGIC
+﻿//MAUI: APPLICATION XAML LOGIC
 namespace Maui.eCommerce;
 
 public partial class App : Application

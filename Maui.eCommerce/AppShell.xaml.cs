@@ -1,4 +1,4 @@
-//MAUI: SHELL XAML LOGIC
+﻿//MAUI: SHELL XAML LOGIC
 namespace Maui.eCommerce;
 
 public partial class AppShell : Shell
