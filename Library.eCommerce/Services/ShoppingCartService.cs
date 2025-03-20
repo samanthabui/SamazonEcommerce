@@ -41,7 +41,7 @@ namespace Library.eCommerce.Services
 
         private static ShoppingCartService? instance;
 
-        //NEED PRIVATE CONSTRUCTOR. 
+        //NEED PRIVATE CONSTRUCTOR.
         private ShoppingCartService()
         {
 
