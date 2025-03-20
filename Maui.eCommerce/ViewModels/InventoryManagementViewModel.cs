@@ -21,7 +21,7 @@ namespace Maui.eCommerce.ViewModels
     public class InventoryManagementViewModel: INotifyPropertyChanged
     {
         //MAKE NULLABILITY OF REFERENCE TYPE MATCH USING ?  
-        public Product? SelectedProduct { get; set; }
+        public Item? SelectedProduct { get; set; }
 
         //SEARCH: SEARCH FUNCTION BASED ON QUERY 
         //SEARCH: ENTRY TEXT IN INVENTORY MANAGEMENT XAML SCRIPT. FUNCTION IMPLEMENTATION IN INVENTORY MANAGEMENT XAML LOGIC SearchClicked(). INVENTORY MANAGEMENT VIEWMODEL Query { get; set; }, ObservableCollection.
