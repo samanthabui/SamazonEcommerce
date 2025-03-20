@@ -1,4 +1,5 @@
 //MAUI: CONTENT PAGE INVENTORY MANAGEMENT VIEW MODEL
+using Library.eCommerce.Models;
 using Library.eCommerce.Services;
 using Samazon.Models;
 
@@ -47,18 +48,18 @@ namespace Maui.eCommerce.ViewModels
         }
 
         //ITEM SOURCE IS OBSERVABLE COLLECTION. CHANGE LIST TO OBERSERVABLE COLLECTION.
-        public ObservableCollection<Product?> Products
+        public ObservableCollection<Item?> Products
         {
             get
             {
-                var filteredList = _svc.Products.Where(p => p?.Name?.ToLower().Contains(Query?.ToLower() ?? string.Empty) ?? false);
-                return new ObservableCollection<Product?>(filteredList);
+                var filteredList = _svc.Products.Where(p => p?.Product?.Name?.ToLower().Contains(Query?.ToLower() ?? string.Empty) ?? false);
+                return new ObservableCollection<Item?>(filteredList);
             }
         }
   
         //BINDING MVVM: DELETE FUNCTION IS TIGHTLY COUPLED TO VIEW. WANT TO ENCAPSULATE FOR THE VIEW MODEL TO HANDLE PRODUCT SERVICE PROXY.
         //BINDING MVVM: GO TO VIEW MODEL AND CREATE A DELETE FUNCTION.
-        public Product? Delete()
+        public Item? Delete()
         {
             var item = _svc.Delete(SelectedProduct?.ID ?? 0);
             NotifyPropertyChanged("Products");

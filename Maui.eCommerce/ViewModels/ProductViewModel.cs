@@ -1,4 +1,5 @@
 //MAUI: CONTENT PAGE INVENTORY MANAGEMENT VIEW MODEL
+using Library.eCommerce.Models;
 using Library.eCommerce.Services;
 using Samazon.Models;
 
@@ -17,24 +18,24 @@ namespace Maui.eCommerce.ViewModels
 {
 	//BINDING MVVM: PRODUCTVIEWMODEL IS TIGHTLY COUPLED TO VIEW. WANT TO ENCAPSULATE FOR THE VIEW MODEL TO HANDLE PRODUCT SERVICE PROXY.
 	//BINDING MVVM: GO TO VIEW MODEL AND CREATE A PRODUCTVIEWMODEL FUNCTION.
-	public class  ProductViewModel
+	public class ProductViewModel
 	{
 		//EDIT: TYPE OF PROPERTIES - PROPERTY THAT TAKES DATA FROM CLASS, PROPERTY PUBLIC ACCESSORS TO PIECE OF INFORMATION.
 		public string? Name { 
 			get 
 			{
-				return Model?.Name ?? string.Empty;
+				return Model?.Product?.Name ?? string.Empty;
 			}
 			set 
 			{
-				if(Model != null && Model.Name != value)
+				if(Model != null && Model.Product?.Name != value)
 				{
-					Model.Name = value;
+					Model.Product.Name = value;
 				}
 			}
 		} 
 
-		public Product? Model { get; set; }
+		public Item? Model { get; set; }
 
 		//BINDING MVVM: PRODUCTVIEWMODEL IS TIGHTLY COUPLED TO VIEW. WANT TO ENCAPSULATE FOR THE VIEW MODEL TO HANDLE PRODUCT SERVICE PROXY.
 		//BINDING MVVM: GO TO VIEW MODEL AND CREATE A PRODUCTVIEWMODEL FUNCTION.
@@ -45,13 +46,13 @@ namespace Maui.eCommerce.ViewModels
 
 		public ProductViewModel()
 		{
-			Model = new Product();
+			Model = new Item();
 		}
 
 		//EDIT: CONVERSION CONSTRUCTOR CONVERTS FROM MODEL TO VIEWMODEL.
-		public ProductViewModel(Product? model)
+		public ProductViewModel(Item? model)
 		{
-			Model = new Product();
+			Model = new Item();
 		}
 	}
 }
