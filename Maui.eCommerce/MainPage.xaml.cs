@@ -16,7 +16,7 @@ public partial class MainPage : ContentPage
 	//BINDING MVVM: VIOLATES MVVM IF VIEW AND VIEW MODEL ARE THE SAME. THEREFORE, MAKE CLASS NAMED MAINVIEWMODEL.
 	//BINDING MVVM: DECOUPLE THE DEPENDENCIES. HAVE THE ABILITY TO REUSE VIEWMODELS.
 	public MainPage()
-	{
+	{ 
 		InitializeComponent();
 		BindingContext = this;
 	}
@@ -34,6 +34,12 @@ public partial class MainPage : ContentPage
 	private void InventoryClicked(object sender, EventArgs e)
 	{
 		Shell.Current.GoToAsync("//InventoryManagement");
+	}
+
+	//SERVICES  
+	private void CartClicked(object sender, EventArgs e)
+	{
+		Shell.Current.GoToAsync("//ShoppingManagement");
 	}
 }
 

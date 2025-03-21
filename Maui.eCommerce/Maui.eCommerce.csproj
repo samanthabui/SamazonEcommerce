@@ -67,4 +67,10 @@
 	  <ProjectReference Include="../Library.eCommerce/Library.eCommerce.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="Views/ShoppingManagementView.xaml.cs">
+	    <DependentUpon>ShoppingManagementView.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
 </Project>
