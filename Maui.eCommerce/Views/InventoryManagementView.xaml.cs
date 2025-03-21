@@ -36,7 +36,7 @@ public partial class InventoryManagementView : ContentPage, INotifyPropertyChang
 	private void EditClicked(object sender, EventArgs e)  
     {
 		var productId = (BindingContext as InventoryManagementViewModel)?.SelectedProduct?.ID;
-        Shell.Current.GoToAsync("//Product?productId={productId}");  
+        Shell.Current.GoToAsync($"//Product?productId={productId}");  
     }
 
 	//SEARCH: SEARCH FUNCTION BASED ON QUERY 
