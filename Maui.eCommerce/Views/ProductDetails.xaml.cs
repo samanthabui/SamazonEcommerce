@@ -14,13 +14,13 @@ public partial class ProductDetails : ContentPage
 	public ProductDetails()
 	{
 		InitializeComponent();
-		//BindingContext = new ProductViewModel(); MOVE TO REFRESH
+		//BindingContext = new ProductVi ewModel(); MOVE TO REFRESH
 	} 
 
 	//EDIT: EDIT FUNCTION BASED ON PRODUCT ID.
 	//EDIT: ROUTE MAPPED IN APP SHELL XAML SCRIPT. FUNCTION IMPLEMENTATION IN INVENTORY MANAGEMENT XAML LOGIC EditClicked(). PRODUCT DETAIL XAML LOGIC QueryProperty, ProductId { get; set; }; 
 	public int ProductId { get; set; }
-	private void GoBackClicked(object sender, EventArgs e)
+	private void ReturnClicked(object sender, EventArgs e)
 	{
 		Shell.Current.GoToAsync("//InventoryManagement");
 	}
@@ -39,10 +39,12 @@ public partial class ProductDetails : ContentPage
 	//ADD: EVENT HANDLER IN XAML SCRIPT NavigatedTo. FUNCTION IMPLEMENTATION IN XAML LOGIC ContentPage_NavigatedTo. VIEWMODEL NotifyPropertyChanged RefreshProductList.
 	private void ContentPage_NavigatedTo(object sender, NavigatedToEventArgs e)
 	{ 
+		//ADD
 		if(ProductId == 0)
 		{
 			BindingContext = new ProductViewModel();
 		}
+		//UPDATE
 		else
 		{
 			BindingContext = new ProductViewModel(ProductServiceProxy.Current.GetById(ProductId));

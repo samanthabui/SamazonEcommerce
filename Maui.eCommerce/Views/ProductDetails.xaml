@@ -10,13 +10,21 @@
         <Entry
             Text="{Binding Name}"/>
 
+        <Label
+            Text="Quantity: "
+            VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+
+        <Entry
+            Text="{Binding Quantity}"/>
+             
         <Button 
             Text="SUBMIT" 
             Clicked="SubmitClicked"/>
-
+ 
         <Button 
             Text="RETURN" 
-            Clicked="GoBackClicked"/>
+            Clicked="ReturnClicked"/>
             
     </VerticalStackLayout>
 
