@@ -1,4 +1,4 @@
-//MAUI: CONTENT PAGE INVENTORY MANAGEMENT VIEW MODEL
+//MAUI: CONTENT PAGE PRODUCT VIEW MODEL
 using Library.eCommerce.Models;
 using Library.eCommerce.Services;
 using Samazon.Models;
