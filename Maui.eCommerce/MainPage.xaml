@@ -22,7 +22,8 @@
                 Clicked="InventoryClicked"/>
                 
             <Button
-                Text="CART MANAGEMENT"/>
+                Text="CART MANAGEMENT"
+                Clicked="CartClicked"/>
 
         </VerticalStackLayout>
     </ScrollView>

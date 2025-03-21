@@ -9,7 +9,7 @@
     Title="Maui.eCommerce">
 
     <ShellContent
-        Title="MAIN PAGE"
+        Title="MAIN"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
     <ShellContent
@@ -17,8 +17,12 @@
         ContentTemplate="{DataTemplate views:InventoryManagementView}"
         Route="InventoryManagement" />
     <ShellContent
-        Title="PRODUCT DETAILS"
+        Title="PRODUCT"
         ContentTemplate="{DataTemplate views:ProductDetails}"
         Route="Product" />
+    <ShellContent
+        Title="SHOPPING MANAGEMENT"
+        ContentTemplate="{DataTemplate views:ShoppingManagementView}"
+        Route="ShoppingManagement"/>
 
 </Shell>
