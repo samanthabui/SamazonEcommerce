@@ -24,9 +24,18 @@ public class Item
         }
     }
     //DEFAULT CONSTRUCTOR. 
-
     public Item()
     {
         Product = new Product();
+    }
+
+    //COPY CONSTRUCTOR FOR ITEM WILL CALL COPY CONSTRUCTOR FOR PRODUCT. DEEP COPY FOR ITEM WILL USE DEEP COPY FOR PRODUCT.  
+    public Item(Item i)
+    {
+        //Product = i.Product;
+        Product = new Product(i.Product);
+        Quantity = i.Quantity;
+        ID = i.ID;
+
     }
 }
