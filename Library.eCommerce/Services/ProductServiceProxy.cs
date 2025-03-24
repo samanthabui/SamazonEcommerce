@@ -3,6 +3,7 @@
 
 //USING
 using System;
+using System.Runtime.CompilerServices;
 using Library.eCommerce.Models;
 using Samazon.Models;
 
@@ -76,6 +77,15 @@ namespace Library.eCommerce.Services
                 item.ID = LastKey + 1;
                 item.Product.ID = item.ID;
                 Products.Add(item);
+            }
+            //DEEP COPY: SHALLOW COPY MODIFIED, DEEP COPY NOT MODIFIED. MODIFY DIRECTLY IN PRODUCTSERVICEPROXY.
+            //DEEP COPY: FIND ALL WITH SAME ID, DEEP COPY MODIFIED.
+            else
+            {
+                var existingItem = Products.FirstOrDefault(p => p.ID == item.ID);            
+                var index = Products.IndexOf(existingItem);
+                Products.RemoveAt(index); 
+                Products.Insert(index, new Item(item));
             }
             return item;
         }

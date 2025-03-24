@@ -30,6 +30,13 @@ namespace Samazon.Models
             Name = string.Empty;
         }
 
+        //COPY CONSTRUCTOR FOR ITEM WILL CALL COPY CONSTRUCTOR FOR PRODUCT. DEEP COPY FOR ITEM WILL USE DEEP COPY FOR PRODUCT.
+        public Product(Product p)
+        {
+            Name = p.Name;
+            ID = p.ID;
+        }
+
         public override string ToString()
         {
             return Display ?? string.Empty;

@@ -17,9 +17,12 @@ using System.Threading.Tasks;
 namespace Maui.eCommerce.ViewModels
 {
 	//BINDING MVVM: PRODUCTVIEWMODEL IS TIGHTLY COUPLED TO VIEW. WANT TO ENCAPSULATE FOR THE VIEW MODEL TO HANDLE PRODUCT SERVICE PROXY.
-	//BINDING MVVM: GO TO VIEW MODEL AND CREATE A PRODUCTVIEWMODEL FUNCTION.
+	//BINDING MVVM: GO  TO VIEW MODEL AND CREATE A PRODUCTVIEWMODEL FUNCTION.
 	public class ProductViewModel
 	{
+		//CACHED MODEL SAVES COPY AT INITIATION OF THE MODEL
+		private Item? cachedModel { get; set; }
+
 		//EDIT: TYPE OF PROPERTIES - PROPERTY THAT TAKES DATA FROM CLASS, PROPERTY PUBLIC ACCESSORS TO PIECE OF INFORMATION.
 		public string? Name 
 		{ 
@@ -61,15 +64,31 @@ namespace Maui.eCommerce.ViewModels
 			ProductServiceProxy.Current.AddOrUpdate(Model);
 		}
 
+		//CACHED MODEL SAVES COPY AT INITIATION OF THE MODEL
+		public void Undo()
+		{
+			//DEEP COPY: SHALLOW COPY MODIFIED, DEEP COPY NOT MODIFIED. MODIFY DIRECTLY IN PRODUCTSERVICEPROXY.
+			//Model = cachedModel; 
+			ProductServiceProxy.Current.AddOrUpdate(cachedModel);
+		}
+
+		//DEFAULT CONSTRUCTOR
 		public ProductViewModel()
 		{
 			Model = new Item();
+			cachedModel = null;
 		}
 
+		//COPY CONSTRUCTOR
 		//EDIT: CONVERSION CONSTRUCTOR CONVERTS FROM MODEL TO VIEWMODEL.
 		public ProductViewModel(Item? model)
 		{ 
 			Model = model;
+			//CACHED MODEL: SAVES COPY AT INITIATION OF THE MODEL
+			if(model != null)
+			{
+			cachedModel = new Item(model);
+			}
 		} 
 	}	
 }

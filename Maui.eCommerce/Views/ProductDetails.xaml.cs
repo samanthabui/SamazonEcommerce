@@ -22,6 +22,8 @@ public partial class ProductDetails : ContentPage
 	public int ProductId { get; set; }
 	private void ReturnClicked(object sender, EventArgs e)
 	{
+		//CACHED MODEL SAVES COPY AT INITIATION OF THE MODEL
+		(BindingContext as ProductViewModel).Undo();
 		Shell.Current.GoToAsync("//InventoryManagement");
 	}
 
@@ -47,7 +49,7 @@ public partial class ProductDetails : ContentPage
 		//UPDATE
 		else
 		{
-			BindingContext = new ProductViewModel(ProductServiceProxy.Current.GetById(ProductId));
+			BindingContext = new ProductViewModel(ProductServiceProxy.Current.GetById(ProductId)); //SHALLOW COPY. NEED DEEP COPY.
 		}
 	}
 }
