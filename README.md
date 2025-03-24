@@ -32,18 +32,31 @@ Library.eCommerce
 │
 ├── Library.eCommerce.csproj
 ├── Models
+│   └── Item.cs
 │   └── Product.cs
 └── Services
     └── ProductServiceProxy.cs
+    └── ShoppingCartService.cs
 
 Maui.eCommerce
 │
-├── App.xaml
-├── App.xaml.cs
-├── AppShell.xaml
-├── AppShell.xaml.cs
 ├── Maui.eCommerce.csproj
+├── App.xaml.cs
 ├── MauiProgram.cs
+├── AppShell.xaml.cs
+├── AppShell.xaml
+├── Views
+│   └── InventoryManagementView.xaml
+│   └── InventoryManagementView.xaml.cs
+│   └── ProductDetails.xaml
+│   └── ProductDetails.xaml.cs
+│   └── ShoppingManagementView.xaml
+│   └── ShoppingManagementView.xaml.cs
+├── ViewModels
+│   └── InventoryManagementViewModel.cs
+│   └── ProductViewModel.cs
+│   └── ShoppingManagementViewModel.cs
+│   └── MainViewModel.cs
 ├── MainPage.xaml
 ├── MainPage.xaml.cs
 ├── Properties
