@@ -1,4 +1,4 @@
-//SERVICES  
+//CART MANAGEMENT
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,8 @@ namespace Library.eCommerce.Services
     //NEED PUBLIC TO USE.
     public class ShoppingCartService
     {
-        private ProductServiceProxy _prodSvc;
+        //private ProductServiceProxy _prodSvc;
+        private ProductServiceProxy _prodSvc = ProductServiceProxy.Current;
         private List<Item> items;
         public List<Item> CartItems
         {
@@ -48,6 +49,38 @@ namespace Library.eCommerce.Services
         private ShoppingCartService()
         {
             items = new List<Item>();
+        }
+
+        //CART MANAGEMENT: PURCHASE
+        public Item? AddOrUpdate(Item item)
+        {
+            //ERROR HANDLE: ENSURES QUANTITY 
+            var existingInvItem = _prodSvc.GetById(item.ID);
+            if(existingInvItem == null || existingInvItem.Quantity == 0)
+            {
+                return null;
+            }
+            if(existingInvItem != null)
+            {
+                existingInvItem.Quantity--;
+            }
+
+            var existingItem = CartItems.FirstOrDefault(i => i.ID == item.ID);
+            //ADD IF NO EXIST
+            if(existingItem == null)
+            { 
+                //INIT QUANTITY TO 1; 
+                var newItem = new Item(item);
+                newItem.Quantity = 1;
+                CartItems.Add(newItem);
+            }
+            
+            //UPDATE IF EXIST
+            else
+            {
+                existingItem.Quantity++; 
+            }
+            return existingInvItem;
         }
     }
 }
