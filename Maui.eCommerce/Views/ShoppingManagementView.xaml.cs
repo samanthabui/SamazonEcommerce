@@ -1,8 +1,8 @@
-//MAUI: CONTENT PAGE SHOPPING MANAGEMENT LOGIC
+//MAUI: CONTENT PAGE CART MANAGEMENT LOGIC
 using Maui.eCommerce.ViewModels;
 namespace Maui.eCommerce.Views;
 
-//SERVICES  
+//CART MANAGEMENT
 public partial class ShoppingManagementView: ContentPage
 {
 	public ShoppingManagementView()
@@ -11,8 +11,9 @@ public partial class ShoppingManagementView: ContentPage
 		BindingContext = new ShoppingManagementViewModel();
 	}
 
+    	//CART MANAGEMENT: PURCHASE
 	private void AddToCartClicked(object sender, EventArgs e)
 	{
-
+		(BindingContext as ShoppingManagementViewModel).PurchaseItem();
 	}
 }
