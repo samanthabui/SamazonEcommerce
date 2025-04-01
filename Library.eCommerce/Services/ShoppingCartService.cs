@@ -1,4 +1,5 @@
-//CART MANAGEMENT
+//CART MANAGEMENT SERVICE PROXY
+ 
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,10 +37,6 @@ namespace Library.eCommerce.Services
                     instance = new ShoppingCartService();
                 }
                 return instance;
-            }
-            set
-            {
-
             }
         }
 
@@ -81,6 +78,34 @@ namespace Library.eCommerce.Services
                 existingItem.Quantity++; 
             }
             return existingInvItem;
+        }
+        
+        //CART MANAGEMENT: PURCHASE RETURN. 
+        //INSTEAD OF MODIFYING ADDTOCART AND BREAKING INVENTORYMANAGEMENT, MAKE NEW FUNCTION PURCHASEITEM.
+        public Item ReturnItem(Item? item)
+        {
+            if(item?.ID <= 0 || item == null) 
+            {
+                return null;
+            }
+
+            //var itemToPurchase = GetById(item.ID);
+            var itemToReturn = CartItems.FirstOrDefault(c => c.ID == item.ID);
+            if(itemToReturn != null)
+            {
+                itemToReturn.Quantity--;
+                var inventoryItem = _prodSvc.Products.FirstOrDefault(p => p.ID == itemToReturn.ID);
+                if(inventoryItem == null)
+                {
+                    _prodSvc.AddOrUpdate(new Item(itemToReturn));
+                }
+                else
+                {
+                    inventoryItem.Quantity++;
+                }
+            }
+
+            return itemToReturn;
         }
     }
 }
