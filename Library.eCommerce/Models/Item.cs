@@ -1,4 +1,5 @@
-//SERVICES
+//CART MANAGEMENT MODEL
+
 using System;
 using Samazon.Models;
 

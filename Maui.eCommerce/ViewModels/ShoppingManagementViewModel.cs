@@ -20,11 +20,24 @@ namespace Maui.eCommerce.ViewModels
         private ShoppingCartService _cartSvc = ShoppingCartService.Current;
         //CART MANAGMENT: PURCHASE
         public Item? SelectedItem { get; set; }
+        //CART MANAGEMENT: PURCHASE RETURN 
+        public Item? SelectedCartItem { get; set; }
+
         public ObservableCollection<Item?> Inventory
         {
             get
             {
-                return new ObservableCollection<Item?>(_invSvc.Products);
+                //return new ObservableCollection<Item?>(_invSvc.Products);
+                return new ObservableCollection<Item?>(_invSvc.Products.Where(i => i?.Quantity > 0));
+            }   
+        }
+ 
+        public ObservableCollection<Item?> ShoppingCart
+        {
+            get
+            {
+                //return new ObservableCollection<Item?>(_invSvc.Products);
+                return new ObservableCollection<Item?>(_cartSvc.CartItems.Where(i => i?.Quantity > 0));
             }   
         }
 
@@ -44,12 +57,35 @@ namespace Maui.eCommerce.ViewModels
         {
             if(SelectedItem != null)
             {
+                var shouldRefresh = SelectedItem.Quantity >= 1;
                 var updatedItem = _cartSvc.AddOrUpdate(SelectedItem);
-                if(updatedItem != null && updatedItem.Quantity > 0)
+
+                //if(updatedItem != null && updatedItem.Quantity > 0)
+                if(updatedItem != null && shouldRefresh)
                 {
+                    //ONLY WANT TO REFRESH WHEN CALLED
                     NotifyPropertyChanged(nameof(Inventory));
+                    NotifyPropertyChanged(nameof(ShoppingCart));
+                }
+            }
+        }
+
+        //CART MANAGEMENT: PURCHASE RETURN 
+        public void ReturnItem()
+        {
+            if(SelectedCartItem != null)
+            {
+                var shouldRefresh = SelectedCartItem.Quantity >= 1;
+                var updatedItem = _cartSvc.ReturnItem(SelectedCartItem);
+
+                //if(updatedItem != null && updatedItem.Quantity > 0)
+                if(updatedItem != null && shouldRefresh)
+                {
+                    //ONLY WANT TO REFRESH WHEN CALLED
+                    NotifyPropertyChanged(nameof(Inventory));
+                    NotifyPropertyChanged(nameof(ShoppingCart));
                 }
             }
         }
     }
-} 
+}   

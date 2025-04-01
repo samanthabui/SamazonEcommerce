@@ -1,7 +1,5 @@
-///SAMANTHA BUI
-//SAMAZON ECOMMERCE APP I
+//PRODUCT SERVICE PROXY
 
-//USING
 using System;
 using System.Runtime.CompilerServices;
 using Library.eCommerce.Models;
@@ -60,7 +58,7 @@ namespace Library.eCommerce.Services
                 }
                 return instance;
             }
-        }
+        } 
 
         //PUBLIC LIST
         public List<Product?> list;

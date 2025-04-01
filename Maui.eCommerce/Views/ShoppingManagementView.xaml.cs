@@ -11,9 +11,15 @@ public partial class ShoppingManagementView: ContentPage
 		BindingContext = new ShoppingManagementViewModel();
 	}
 
-    	//CART MANAGEMENT: PURCHASE
+    //CART MANAGEMENT: PURCHASE
 	private void AddToCartClicked(object sender, EventArgs e)
 	{
 		(BindingContext as ShoppingManagementViewModel).PurchaseItem();
+	}
+
+    //CART MANAGEMENT: PURCHASE RETURN
+	private void RemoveFromCartClicked(object sender, EventArgs e)
+	{
+		(BindingContext as ShoppingManagementViewModel).ReturnItem();
 	}
 }
