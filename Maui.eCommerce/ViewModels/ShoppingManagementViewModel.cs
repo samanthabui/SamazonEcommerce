@@ -47,7 +47,8 @@ namespace Maui.eCommerce.ViewModels
         public void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             if (PropertyChanged is null){
-                throw new ArgumentException(nameof(PropertyChanged));
+                //throw new ArgumentException(nameof(PropertyChanged));
+                 throw new ArgumentNullException(nameof(PropertyChanged));//POSSIBLE RESOLUTION
             }
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
