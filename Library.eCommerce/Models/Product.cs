@@ -1,6 +1,7 @@
 //PRODUCT MODEL
 
 using System;
+using Library.eCommerce.Models.DTO;
 
 //NAMESPACE DEVELOP LIBRARY MODEL
 namespace Samazon.Models
@@ -22,6 +23,14 @@ namespace Samazon.Models
             }
         }
 
+        //DTO
+        public string LegacyProperty1 { get; set; }
+        public string LegacyProperty2 { get; set; }
+        public string LegacyProperty3 { get; set; }
+        public string LegacyProperty4 { get; set; }
+        public string LegacyProperty5 { get; set; }
+        public string LegacyProperty6 { get; set; }
+
         //PUBLIC CONSTRUCTOR INITIALIZES NAME TO EMPTY STRING
         public Product()
         {
@@ -33,6 +42,14 @@ namespace Samazon.Models
         {
             Name = p.Name;
             ID = p.ID;
+        }
+
+        //DTO
+        public Product(ProductDTO p)
+        {
+            Name = p.Name;
+            ID = p.ID;
+            LegacyProperty1 = string.Empty;
         }
 
         public override string ToString()
