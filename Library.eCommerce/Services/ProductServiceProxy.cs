@@ -3,6 +3,7 @@
 using System;
 using System.Runtime.CompilerServices;
 using Library.eCommerce.Models;
+using Library.eCommerce.Models.DTO;
 using Samazon.Models;
 
 //NAMESPACE DEVELOP LIBRARY SERVICE
@@ -17,10 +18,11 @@ namespace Library.eCommerce.Services
             //INITIALIZE PRODUCT OBJECT
             Products = new List<Item?>            
             {
-                new Item{ Product = new Product{ID = 1, Name ="PILOT LOGBOOK"}, ID = 1, Quantity = 10},
-                new Item{ Product = new Product{ID = 2, Name ="AVIATION HEADPHONES"}, ID = 2, Quantity = 10},
-                new Item{ Product = new Product{ID = 3, Name ="AVIATOR SUNGLASSES"}, ID = 3, Quantity = 10},
-                new Item{ Product = new Product{ID = 4, Name ="FLIGHT BAG"}, ID = 4, Quantity = 10}
+                //DTO
+                new Item{ Product = new ProductDTO{ID = 1, Name ="PILOT LOGBOOK"}, ID = 1, Quantity = 10},
+                new Item{ Product = new ProductDTO{ID = 2, Name ="AVIATION HEADPHONES"}, ID = 2, Quantity = 10},
+                new Item{ Product = new ProductDTO{ID = 3, Name ="AVIATOR SUNGLASSES"}, ID = 3, Quantity = 10},
+                new Item{ Product = new ProductDTO{ID = 4, Name ="FLIGHT BAG"}, ID = 4, Quantity = 10}
             };
         }
 
