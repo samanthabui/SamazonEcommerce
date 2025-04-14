@@ -2,7 +2,7 @@
 
 ## DESCRIPTION:
 
-Samazon is an eCommerce application developed using **C#** and **.NET**. The application aims to provide an inventory management system, a shopping cart functionality, and a checkout system, including tax calculations. Currently, the project is implemented as a **console application** but will be incrementally transitioned to a **user interface (UI)** application using the **MVVM architecture**.
+Samazon is an eCommerce application developed using **C#** and **.NET**. The application aims to provide an inventory management system, a shopping cart functionality, and a checkout system, including tax calculations. Currently, the project is implemented as a **console application** but will be incrementally transitioned to a **.NET MAUI** application using the **MVVM architecture**.
 
 ## FUNCTIONALITY:
 - **Inventory Management**:
