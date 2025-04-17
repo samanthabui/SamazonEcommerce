@@ -52,11 +52,13 @@ namespace Library.eCommerce.Services
             {
                 //LOCK AND SEMAPHORE TO PREVENT MULTIPLE INSTANCES
                 lock(instanceLock)
-                if(instance == null)
-                {
-                    instance = new ProductServiceProxy();
+                {//RESOLUTION
+                    if(instance == null)
+                    {
+                        instance = new ProductServiceProxy();
+                    }
+                    return instance;
                 }
-                return instance;
             }
         } 
 
