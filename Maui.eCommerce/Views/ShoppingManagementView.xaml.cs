@@ -22,4 +22,11 @@ public partial class ShoppingManagementView: ContentPage
 	{
 		(BindingContext as ShoppingManagementViewModel).ReturnItem();
 	}
+
+	//CART MANAGEMENT: IN LINE BUTTON USING ICOMMAND.
+	private void InLineAddClicked(object sender, EventArgs e)
+	{
+		(BindingContext as ShoppingManagementViewModel).ReturnItem();
+	}
+	
 }
