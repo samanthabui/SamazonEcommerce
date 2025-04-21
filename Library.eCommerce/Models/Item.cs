@@ -1,5 +1,6 @@
 //CART MANAGEMENT MODEL
 using Library.eCommerce.Models.DTO;
+using Library.eCommerce.Services;
 using Samazon.Models;
 
 using System;
@@ -20,7 +21,7 @@ public class Item
     public int? Quantity { get; set; }
 
     //MAINTAIN ARCHITECTURAL PURITY, BASTARDIZE PURIST ARCHITECTURE TO EXPERIENCE THEN REFRACTOR.
-    //DTO
+    //CART MANAGEMENT: IN LINE BUTTON USING ICOMMAND.
     public ICommand? AddCommand { get; set; }
 
     public override string ToString()
@@ -42,6 +43,16 @@ public class Item
         //DTO
         Product = new ProductDTO();
         Quantity = 0;
+        //CART MANAGEMENT: IN LINE BUTTON USING ICOMMAND.
+        AddCommand = new Command(DoAdd);
+    }
+
+    //CART MANAGEMENT: IN LINE BUTTON USING ICOMMAND.
+    private void DoAdd()
+    {
+        //var updatedItem = _cartSvc.AddOrUpdate(SelectedItem);
+        //private ShoppingCartService _cartSvc = ShoppingCartService.Current;
+        ShoppingCartService.Current.AddOrUpdate(this);
     }
 
     //COPY CONSTRUCTOR FOR ITEM WILL CALL COPY CONSTRUCTOR FOR PRODUCT. DEEP COPY FOR ITEM WILL USE DEEP COPY FOR PRODUCT.  
@@ -52,8 +63,8 @@ public class Item
         Product = new ProductDTO(i.Product);
         Quantity = i.Quantity;
         ID = i.ID;
-
-        //AddCommand = new Command(DoAdd);
+        //CART MANAGEMENT: IN LINE BUTTON USING ADDCOMMAND
+        AddCommand = new Command(DoAdd);
 
     }
 }
