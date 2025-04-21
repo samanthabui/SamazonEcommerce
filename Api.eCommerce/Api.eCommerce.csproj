@@ -7,7 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../Library.eCommerce/Library.eCommerce.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Library.eCommerce">
+      <HintPath>..\..\Library.eCommerce\bin\Debug\net9.0\Library.eCommerce.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
