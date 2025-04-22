@@ -23,42 +23,39 @@ Samazon is an eCommerce application developed using C# and .NET. The application
 ## DIRECTORY STRUCTURE:
 
 ```plaintext
-Samazon
-│
+Samazon/
 ├── Program.cs
 ├── Samazon.csproj
 
-Library.eCommerce
-│
+Library.eCommerce/
 ├── Library.eCommerce.csproj
-├── Models
-│   └── Item.cs
-│   └── Product.cs
-└── Services
-    └── ProductServiceProxy.cs
+├── Models/
+│   ├── Item.cs
+│   ├── Product.cs
+└── Services/
+    ├── ProductServiceProxy.cs
     └── ShoppingCartService.cs
 
-Maui.eCommerce
-│
+Maui.eCommerce/
 ├── Maui.eCommerce.csproj
 ├── App.xaml.cs
 ├── MauiProgram.cs
 ├── AppShell.xaml.cs
 ├── AppShell.xaml
-├── Views
-│   └── InventoryManagementView.xaml
-│   └── InventoryManagementView.xaml.cs
-│   └── ProductDetails.xaml
-│   └── ProductDetails.xaml.cs
-│   └── ShoppingManagementView.xaml
+├── Views/
+│   ├── InventoryManagementView.xaml
+│   ├── InventoryManagementView.xaml.cs
+│   ├── ProductDetails.xaml
+│   ├── ProductDetails.xaml.cs
+│   ├── ShoppingManagementView.xaml
 │   └── ShoppingManagementView.xaml.cs
-├── ViewModels
-│   └── InventoryManagementViewModel.cs
-│   └── ProductViewModel.cs
-│   └── ShoppingManagementViewModel.cs
+├── ViewModels/
+│   ├── InventoryManagementViewModel.cs
+│   ├── ProductViewModel.cs
+│   ├── ShoppingManagementViewModel.cs
 │   └── MainViewModel.cs
 ├── MainPage.xaml
 ├── MainPage.xaml.cs
-├── Properties
-├── Resources
-├── Platforms
+├── Properties/
+├── Resources/
+├── Platforms/
